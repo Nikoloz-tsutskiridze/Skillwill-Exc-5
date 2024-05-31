@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">Button</button>
+    <div id="text">Random Text</div>
+    <script>
+      //exercise 1
+
+      document.getElementById("btn").addEventListener("click", function () {
+        document.getElementById("text").style.display = "none";
+      });
+
+      //exercise 2
+
+      let cardDiv = document.createElement("div");
+      cardDiv.id = "card";
+
+      let h2El = document.createElement("h2");
+      h2El.textContent = "Gandalf";
+
+      let link = document.createElement("a");
+      link.href = "#";
+      link.textContent = "Go to profile";
+
+      cardDiv.appendChild(h2El);
+      cardDiv.appendChild(link);
+
+      document.body.appendChild(cardDiv);
+    </script>
+  </body>
+</html>

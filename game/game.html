@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Game</title>
+    <style>
+      .correct {
+        color: green;
+      }
+      .wrong {
+        color: red;
+      }
+      .quiz-question {
+        margin-top: 50px;
+      }
+      body {
+        text-align: center;
+        margin-top: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Quiz Game</h1>
+    <div id="quiz">
+      <div class="quiz-question" data-correct="b">
+        <h3>1. What is the most popular game?</h3>
+        <button class="answer" data-answer="a">basketball</button>
+        <button class="answer" data-answer="b">Footbal</button>
+        <button class="answer" data-answer="c">Tennis</button>
+        <button class="answer" data-answer="d">Bowling</button>
+      </div>
+      <div class="quiz-question" data-correct="a">
+        <h3>2. What's 4*4</h3>
+        <button class="answer" data-answer="a">16</button>
+        <button class="answer" data-answer="b">30</button>
+        <button class="answer" data-answer="c">15</button>
+        <button class="answer" data-answer="d">10</button>
+      </div>
+      <div class="quiz-question" data-correct="d">
+        <h3>3. What color is the grass?</h3>
+        <button class="answer" data-answer="a">Orange</button>
+        <button class="answer" data-answer="b">Blue</button>
+        <button class="answer" data-answer="c">red</button>
+        <button class="answer" data-answer="d">Green</button>
+      </div>
+    </div>
+    <h2>Score: <span id="score">0</span></h2>
+
+    <script>
+      let score = 0;
+      const scoreDisplay = document.getElementById("score");
+      const quizQuestions = document.querySelectorAll(".quiz-question");
+
+      quizQuestions.forEach((question) => {
+        const correctAnswer = question.getAttribute("data-correct");
+        const answers = question.querySelectorAll(".answer");
+
+        answers.forEach((answer) => {
+          answer.addEventListener("click", function () {
+            if (answer.getAttribute("data-answer") === correctAnswer) {
+              answer.classList.add("correct");
+              score++;
+              scoreDisplay.textContent = score;
+            } else {
+              answer.classList.add("wrong");
+            }
+            answers.forEach((btn) => (btn.disabled = true));
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
